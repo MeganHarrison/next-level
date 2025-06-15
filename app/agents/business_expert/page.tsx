@@ -17,6 +17,7 @@ import {
   createConversation,
   updateConversation,
 } from "@/app/actions/chat-history-actions"
+import { TypingIndicator } from "@/components/typing-indicator"
 import { createClient } from "@/utils/supabase/client"
 import {
   DropdownMenu,
@@ -234,7 +235,7 @@ export default function ChatPage() {
       }
 
       // Query strategist agent with context
-      const historyMessages = messages.map((msg) => ({ role: "user" as const, content: msg.content }))
+      const historyMessages = messages.map((msg) => ({ content: msg.content }))
       const result = await askStrategistAgent(userMessage, historyMessages)
 
       // Remove loading message
@@ -367,28 +368,11 @@ export default function ChatPage() {
           <div className="max-w-3xl mx-auto py-6 space-y-6">
             {messages.map((message) => (
               <div
-                key={message.id || `${message.role}-${message.timestamp.getTime()}`}
-                className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+                key={message.id}
+                className="flex justify-start"
               >
-                <div
-                  className={`max-w-[85%] ${
-                    message.role === "user"
-                      ? "bg-gray-100 rounded-2xl px-4 py-3"
-                      : message.role === "error"
-                        ? "text-red-600"
-                        : message.role === "loading"
-                          ? "flex items-center space-x-2"
-                          : ""
-                  }`}
-                >
-                  {message.role === "loading" ? (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                      <span>{message.content}</span>
-                    </>
-                  ) : (
-                    <div className="whitespace-pre-wrap">{message.content}</div>
-                  )}
+                <div className="max-w-[85%] bg-gray-100 rounded-2xl px-4 py-3 whitespace-pre-wrap">
+                  {message.content}
                 </div>
               </div>
             ))}
