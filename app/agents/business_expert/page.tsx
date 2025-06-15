@@ -58,6 +58,7 @@ export default function ChatPage() {
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [isLoadingHistory, setIsLoadingHistory] = useState(true)
+  const [isTyping, setIsTyping] = useState(false)
   const [currentSessionId, setCurrentSessionId] = useState<string | null>(null)
   const [conversations, setConversations] = useState<Conversation[]>([])
   const [showSessionsDialog, setShowSessionsDialog] = useState(false)
@@ -214,6 +215,7 @@ export default function ChatPage() {
 
       setInput("")
       setIsLoading(true)
+      setIsTyping(true)
 
     try {
       // Save user message to database
@@ -240,6 +242,7 @@ export default function ChatPage() {
 
       // Remove loading message
       setMessages((prev) => prev.filter((msg) => msg.id !== loadingId))
+      setIsTyping(false)
 
       if (!result.success) {
         throw new Error(result.error || "Failed to get response")
@@ -267,6 +270,7 @@ export default function ChatPage() {
       }
     } catch (error) {
       console.error("Error:", error)
+      setIsTyping(false)
 
       // Remove loading message
       setMessages((prev) => prev.filter((msg) => msg.id !== loadingId))
@@ -354,31 +358,32 @@ export default function ChatPage() {
       </div>
 
       <div className="flex-1 overflow-y-auto px-8">
-        {isLoadingHistory ? (
-          <div className="h-full flex items-center justify-center">
-            <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
-          </div>
-        ) : messages.length === 0 ? (
-          <div className="h-full flex items-center justify-center text-gray-600">
-            <p className="max-w-md text-center">
-              Ask me anything about business strategy, operations, marketing, or management.
-            </p>
-          </div>
-        ) : (
-          <div className="max-w-3xl mx-auto py-6 space-y-6">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className="flex justify-start"
-              >
-                <div className="max-w-[85%] bg-gray-100 rounded-2xl px-4 py-3 whitespace-pre-wrap">
-                  {message.content}
-                </div>
+      {isLoadingHistory ? (
+        <div className="h-full flex items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+        </div>
+      ) : messages.length === 0 ? (
+        <div className="h-full flex items-center justify-center text-gray-600">
+          <p className="max-w-md text-center">
+            Ask me anything about business strategy, operations, marketing, or management.
+          </p>
+        </div>
+      ) : (
+        <div className="max-w-3xl mx-auto py-6 space-y-6">
+          {messages.map((message) => (
+            <div
+              key={message.id}
+              className="flex justify-start"
+            >
+              <div className="max-w-[85%] bg-gray-100 rounded-2xl px-4 py-3 whitespace-pre-wrap">
+                {message.content}
               </div>
-            ))}
-            <div ref={messagesEndRef} />
-          </div>
-        )}
+            </div>
+          ))}
+          {isTyping && <TypingIndicator />}
+          <div ref={messagesEndRef} />
+        </div>
+      )}
       </div>
 
       <div className="p-4 bg-white">

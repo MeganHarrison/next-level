@@ -66,16 +66,12 @@ const data = {
           url: "/agents/agent_crawl4ai",
         },
         {
-          title: "Expert Chat",
-          url: "/agents/expert-chat",
+          title: "N8N Chat",
+          url: "/agents/n8n-rag",
         },
         {
           title: "Expert Chat 2",
           url: "/agents/expert-chat2",
-        },
-        {
-          title: "Openai",
-          url: "/agents/openai",
         },
         {
           title: "Rag Demo",
