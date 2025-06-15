@@ -58,16 +58,12 @@ const data = {
       isActive: true,
       items: [
         {
+          title: "Business Expert",
+          url: "/agents/business_expert",
+        },
+        {
           title: "Crawl4ai",
           url: "/agents/agent_crawl4ai",
-        },
-        {
-          title: "New Chat",
-          url: "/agents/agent_new_chat",
-        },
-        {
-          title: "RagChat",
-          url: "/agents/agent_ragchat",
         },
         {
           title: "Expert Chat",
