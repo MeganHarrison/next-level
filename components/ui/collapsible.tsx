@@ -1,37 +1,11 @@
-'use client'
+"use client"
 
-import * as React from 'react'
-import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
-import { cn } from '@/lib/utils'
+import * as CollapsiblePrimitive from "@radix-ui/react-collapsible"
 
 const Collapsible = CollapsiblePrimitive.Root
 
-const CollapsibleTrigger = React.forwardRef<
-  React.ElementRef<typeof CollapsiblePrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <CollapsiblePrimitive.Trigger
-    ref={ref}
-    className={cn('flex items-center justify-between', className)}
-    {...props}
-  >
-    {children}
-  </CollapsiblePrimitive.Trigger>
-))
-CollapsibleTrigger.displayName = CollapsiblePrimitive.Trigger.displayName
+const CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger
 
-const CollapsibleContent = React.forwardRef<
-  React.ElementRef<typeof CollapsiblePrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Content>
->(({ className, children, ...props }, ref) => (
-  <CollapsiblePrimitive.Content
-    ref={ref}
-    className={cn('overflow-hidden', className)}
-    {...props}
-  >
-    {children}
-  </CollapsiblePrimitive.Content>
-))
-CollapsibleContent.displayName = CollapsiblePrimitive.Content.displayName
+const CollapsibleContent = CollapsiblePrimitive.CollapsibleContent
 
 export { Collapsible, CollapsibleTrigger, CollapsibleContent }

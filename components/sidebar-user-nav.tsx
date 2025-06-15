@@ -19,7 +19,7 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { useRouter } from 'next/navigation';
-import { toast } from '../toast';
+import { Toaster } from '@/components/ui/sonner';
 import { LoaderIcon } from './icons';
 import { guestRegex } from '@/lib/constants';
 
@@ -85,7 +85,7 @@ export function SidebarUserNav({ user }: { user: User }) {
                 className="w-full cursor-pointer"
                 onClick={() => {
                   if (status === 'loading') {
-                    toast({
+                    Toaster({
                       type: 'error',
                       description:
                         'Checking authentication status, please try again!',

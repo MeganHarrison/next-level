@@ -22,6 +22,7 @@ import {
   Map,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { createClient } from "@/utils/supabase/client"
 import { Button } from "@/components/ui/button"
 
@@ -171,7 +172,7 @@ export function Sidebar() {
             </Link>
           ) : (
             <Link href="/" className="text-xs font-sans font-bold tracking-tight">
-              <span>Alleato AI Agents</span>
+              <span>Next Level AI Agents</span>
             </Link>
           )}
 

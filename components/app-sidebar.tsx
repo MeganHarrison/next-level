@@ -4,26 +4,27 @@ import type * as React from "react"
 import {
   AudioWaveform,
   BookOpen,
-  Bot,
+  Sheet,
   Command,
+  File,
   GalleryVerticalEnd,
-  Map as MapIcon,
-  PieChart,
+  Plane,
   Settings2,
-  SquareTerminal,
+  Rocket,
+  Pencil,
 } from "lucide-react"
 
-import { NavMain } from '@/components/nav-main'
-import { NavProjects } from '@/components/nav-projects'
-import { NavUser } from '@/components/nav-user'
-import { TeamSwitcher } from '@/components/team-switcher'
+import { NavMain } from "@/components/nav-main"
+import { NavProjects } from "@/components/nav-projects"
+import { NavUser } from "@/components/nav-user"
+import { TeamSwitcher } from "@/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from '@/components/ui/sidebar'
+} from "@/components/ui/sidebar"
 
 // This is sample data.
 const data = {
@@ -34,17 +35,17 @@ const data = {
   },
   teams: [
     {
-      name: "Next Level AI Agents",
+      name: "Acme Inc",
       logo: GalleryVerticalEnd,
       plan: "Enterprise",
     },
     {
-      name: "Next Level AI Agents",
+      name: "Acme Corp.",
       logo: AudioWaveform,
       plan: "Startup",
     },
     {
-      name: "Next Level AI Agents",
+      name: "Evil Corp.",
       logo: Command,
       plan: "Free",
     },
@@ -52,91 +53,65 @@ const data = {
   navMain: [
     {
       title: "Agents",
-      url: "/home",
-      icon: SquareTerminal,
+      url: "/",
+      icon: Rocket,
       isActive: true,
       items: [
         {
-          title: "Business Strategist",
-          url: "/home",
+          title: "Crawl4ai",
+          url: "/agents/agent_crawl4ai",
         },
         {
-          title: "Documentation Agent",
-          url: "/documentation-agent",
+          title: "New Chat",
+          url: "/agents/agent_new_chat",
         },
         {
-          title: "Content Creator",
-          url: "/content-ideas",
+          title: "RagChat",
+          url: "/agents/agent_ragchat",
         },
         {
-          title: "Travel Blog",
-          url: "/travel-blog",
+          title: "Expert Chat",
+          url: "/agents/expert-chat",
         },
         {
-          title: "Home",
-          url: "/home",
+          title: "Expert Chat 2",
+          url: "/agents/expert-chat2",
         },
         {
-          title: "Agent",
-          url: "/agent",
+          title: "Openai",
+          url: "/agents/openai",
         },
         {
-          title: "Expert",
-          url: "/expert-chat",
+          title: "Rag Demo",
+          url: "/agents/rag-demo",
         },
         {
-          title: "Companies",
-          url: "/companies",
-        },
-        {
-          title: "Content Ideas",
-          url: "/content-ideas",
-        },
-        {
-          title: "Documents",
-          url: "/documents",
+          title: "Rag Query",
+          url: "/agents/rag-query",
         },
       ],
     },
     {
-      title: "Databases",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Clients",
-          url: "#",
-        },
-        {
-          title: "Sales",
-          url: "#",
-        },
-        {
-          title: "Products + Services",
-          url: "/products",
-        },
-      ],
-    },
-    {
-      title: "Components",
+      title: "Pages",
       url: "#",
       icon: BookOpen,
+      isActive: true,
       items: [
         {
-          title: "Tasks",
-          url: "/tasks",
+          title: "Documents",
+          url: "/databases/documents",
         },
         {
-          title: "Contacts",
-          url: "/contacts",
+          title: "Deals",
+          url: "/deals",
         },
         {
           title: "Integrations",
           url: "/integrations",
         },
         {
-          title: "Dashboard",
-          url: "/dashboard",
+          title: "Tasks",
+          url: "/tasks",
         },
       ],
     },
@@ -144,6 +119,7 @@ const data = {
       title: "Settings",
       url: "#",
       icon: Settings2,
+      isActive: true,
       items: [
         {
           title: "General",
@@ -151,6 +127,10 @@ const data = {
         },
         {
           title: "Team",
+          url: "#",
+        },
+        {
+          title: "Billing",
           url: "#",
         },
         {
@@ -162,14 +142,24 @@ const data = {
   ],
   projects: [
     {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
+      name: "Documents",
+      url: "/databases/documents3",
+      icon: File,
     },
     {
-      name: "Travel",
-      url: "#",
-      icon: MapIcon,
+      name: "Travel Blog",
+      url: "/databases/travel-blog",
+      icon: Plane,
+    },
+    {
+      name: "Content Ideas",
+      url: "/databases/content-ideas",
+      icon: Pencil,
+    },
+    {
+      name: "SOPs",
+      url: "/databases/content-ideas",
+      icon: BookOpen,
     },
   ],
 }
