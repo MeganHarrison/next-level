@@ -1,108 +1,106 @@
-<a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
-  <h1 align="center">Next.js and Supabase Starter Kit</h1>
-</a>
+# Next.js with Supabase AI Agents
 
-<p align="center">
- The fastest way to build apps with Next.js and Supabase
-</p>
+This project is a Next.js application integrated with Supabase backend services, designed to provide AI-powered chat agents for business strategy and related domains. It leverages React Server Components, Supabase's Postgres database, and OpenAI's GPT models to deliver an interactive conversational experience.
 
-<p align="center">
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#demo"><strong>Demo</strong></a> ·
-  <a href="#deploy-to-vercel"><strong>Deploy to Vercel</strong></a> ·
-  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
-  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
-  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
-</p>
-<br/>
+## Table of Contents
 
-## Features
+- [Project Overview](#project-overview)
+- [Architecture](#architecture)
+- [Key Features](#key-features)
+- [Codebase Structure](#codebase-structure)
+- [Database Schema](#database-schema)
+- [API and Actions](#api-and-actions)
+- [Frontend Components](#frontend-components)
+- [State Management and Hooks](#state-management-and-hooks)
+- [Error Handling and Logging](#error-handling-and-logging)
+- [Setup and Running](#setup-and-running)
+- [Contributing](#contributing)
 
-- Works across the entire [Next.js](https://nextjs.org) stack
-  - App Router
-  - Pages Router
-  - Middleware
-  - Client
-  - Server
-  - It just works!
-- supabase-ssr. A package to configure Supabase Auth to use cookies
-- Styling with [Tailwind CSS](https://tailwindcss.com)
-- Components with [shadcn/ui](https://ui.shadcn.com/)
-- Optional deployment with [Supabase Vercel Integration and Vercel deploy](#deploy-your-own)
-  - Environment variables automatically assigned to Vercel project
+## Project Overview
 
-## Demo
+This application provides a chat interface where users can interact with AI agents specialized in business strategy. It supports multiple chat sessions (conversations), maintains chat history, and uses embeddings to provide context-aware responses.
 
-You can view a fully working demo at [demo-nextjs-with-supabase.vercel.app](https://demo-nextjs-with-supabase.vercel.app/).
+## Architecture
 
-## Deploy to Vercel
+- **Next.js**: Framework for React with support for server-side rendering and React Server Components.
+- **Supabase**: Backend as a service providing Postgres database, authentication, and real-time capabilities.
+- **OpenAI GPT**: AI model used for generating responses based on user input and context.
+- **TypeScript**: Strongly typed JavaScript for improved developer experience and code quality.
 
-Vercel deployment will guide you through creating a Supabase account and project.
+## Key Features
 
-After installation of the Supabase integration, all relevant environment variables will be assigned to the project so the deployment is fully functioning.
+- Multiple chat sessions (conversations) with persistent history.
+- Contextual AI responses using document embeddings.
+- User authentication via Supabase.
+- Responsive UI with Tailwind CSS and custom components.
+- Robust error handling and logging for debugging.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&demo-title=nextjs-with-supabase&demo-description=This+starter+configures+Supabase+Auth+to+use+cookies%2C+making+the+user%27s+session+available+throughout+the+entire+Next.js+app+-+Client+Components%2C+Server+Components%2C+Route+Handlers%2C+Server+Actions+and+Middleware.&demo-url=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2F&external-id=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&demo-image=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2Fopengraph-image.png)
+## Codebase Structure
 
-The above will also clone the Starter kit to your GitHub, you can clone that locally and develop locally.
+- `app/`: Contains Next.js app routes and pages.
+  - `agents/`: AI agent pages including the main chat interface.
+  - `actions/`: Server-side actions for chat history, strategist agent queries, and more.
+  - `api/`: API routes for auxiliary services.
+- `components/`: Reusable UI components such as buttons, dialogs, text areas, and chat message displays.
+- `utils/`: Utility functions and Supabase client setup.
+- `hooks/`: Custom React hooks for state and effect management.
+- `supabase/`: Database migrations and seed data.
+- `README.md`: Project documentation.
 
-If you wish to just develop locally and not deploy to Vercel, [follow the steps below](#clone-and-run-locally).
+## Database Schema
 
-## Clone and run locally
+- **conversations**: Stores chat session metadata.
+  - `id`: UUID primary key.
+  - `title`: Conversation title.
+  - `created_at`, `updated_at`: Timestamps.
+- **messages**: Stores individual chat messages.
+  - `id`: UUID primary key.
+  - `session_id`: Foreign key to conversations.
+  - `message`: JSONB content of the message.
+  - `created_at`: Timestamp.
 
-1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
+## API and Actions
 
-2. Create a Next.js app using the Supabase Starter template npx command
+- `chat-history-actions.ts`: Functions to create, update, retrieve, and clear conversations and messages in Supabase.
+- `strategist-agent-actions.ts`: Interfaces with OpenAI to generate AI responses using embeddings and chat history.
+- `api/`: Contains serverless functions for additional backend logic.
 
-   ```bash
-   npx create-next-app --example with-supabase with-supabase-app
-   ```
+## Frontend Components
 
-   ```bash
-   yarn create next-app --example with-supabase with-supabase-app
-   ```
+- Chat interface with message list, input box, and controls.
+- Dialogs for chat history and confirmation modals.
+- Dropdown menus for session management.
+- Loading indicators and error message displays.
 
-   ```bash
-   pnpm create next-app --example with-supabase with-supabase-app
-   ```
+## State Management and Hooks
 
-3. Use `cd` to change into the app's directory
+- React `useState` and `useEffect` for managing chat state, loading states, and session data.
+- Auto-scroll behavior on new messages.
+- Form handling with validation and submission logic.
 
-   ```bash
-   cd with-supabase-app
-   ```
+## Error Handling and Logging
 
-4. Rename `.env.example` to `.env.local` and update the following:
+- Comprehensive try-catch blocks in async functions.
+- Detailed error logging with Node.js `util.inspect` for deep error inspection.
+- User-friendly error messages and toast notifications.
+- Error messages saved to chat history for transparency.
 
-   ```
-   NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=[INSERT SUPABASE PROJECT API ANON KEY]
-   # API key for authenticating to your n8n webhook (must match your N8N_AP_KEY value)
-   N8N_AP_KEY=[INSERT YOUR N8N_WEBHOOK_API_KEY]
-   ```
+## Setup and Running
 
-   Both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` can be found in [your Supabase project's API settings](https://app.supabase.com/project/_/settings/api)
+1. Clone the repository.
+2. Install dependencies with `pnpm install` or `npm install`.
+3. Set up Supabase project and configure `.env` with keys:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `OPENAI_API_KEY`
+4. Run database migrations and seed data.
+5. Start the development server with `pnpm dev` or `npm run dev`.
+6. Access the app at `http://localhost:3000`.
 
-5. You can now run the Next.js local development server:
+## Contributing
 
-   ```bash
-   npm run dev
-   ```
+Contributions are welcome! Please follow the existing code style and conventions. Open issues or pull requests for bug fixes, features, or improvements.
 
-   The starter kit should now be running on [localhost:3000](http://localhost:3000/).
+---
 
-6. This template comes with the default shadcn/ui style initialized. If you instead want other ui.shadcn styles, delete `components.json` and [re-install shadcn/ui](https://ui.shadcn.com/docs/installation/next)
-
-> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
-
-## Feedback and issues
-
-Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
-
-## More Supabase examples
-
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
-
-- [Chat SDK Documentation](https://chat-sdk.dev/docs/)
+This README provides a comprehensive overview of the project, its structure, and usage to help developers understand and contribute effectively.

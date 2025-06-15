@@ -3,9 +3,9 @@
 import OpenAI from "openai"
 import { queryDocumentEmbeddings } from "@/app/actions/document-embedding-actions"
 
-export type ChatMessage = { role: "user" | "assistant"; content: string }
+export type SimpleChatMessage = { content: string }
 
-export async function askStrategistAgent(question: string, history: ChatMessage[]) {
+export async function askStrategistAgent(question: string, history: SimpleChatMessage[]) {
   try {
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 
@@ -22,6 +22,7 @@ export async function askStrategistAgent(question: string, history: ChatMessage[
       ? (search.data as { content: string }[]).map((r) => r.content).join("\n---\n")
       : ""
 
+    // Map simple messages to OpenAI ChatCompletionMessageParam with role
     const messages = [
       {
         role: "system" as const,
@@ -29,7 +30,7 @@ export async function askStrategistAgent(question: string, history: ChatMessage[
           ? `Use the following context when answering questions:\n${contextText}`
           : "You are a helpful business strategist.",
       },
-      ...history,
+      ...history.map((msg) => ({ role: "user" as const, content: msg.content })),
       { role: "user" as const, content: question },
     ]
 
