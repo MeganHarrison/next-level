@@ -20,7 +20,7 @@ Create an ai agent that integrates with the current repo. The repo is a supabase
 - Chat history displayed
 - Display uploaded documents in the `documents` Supabase table using the infinite query hook, https://supabase.com/ui/docs/infinite-query-hook (already installed)
 - Upload documents
-    - Use supabase dropzone component (already installed).
+  - Use supabase dropzone component (already installed).
 
 ### **Merge and Configure**
 

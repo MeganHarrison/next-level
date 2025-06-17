@@ -1,7 +1,7 @@
 'use client';
 
-import { Card, CardContent } from "@/components/ui/card";
-import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card"
+import Link from "next/link"
 
 export default function Home() {
   const services = [
@@ -51,7 +51,7 @@ export default function Home() {
       description: "Create and update content with your AI agent workflows.",
       href: "/dashboard",
     },
-  ];
+  ]
 
   return (
     <div className="max-w-6xl mx-auto">
@@ -76,5 +76,5 @@ export default function Home() {
         © 2025 Next Level AI Agents. All Rights Reserved.
       </footer>
     </div>
-  );
+  )
 }

@@ -32,6 +32,9 @@ importers:
       '@codemirror/view':
         specifier: ^6.37.1
         version: 6.37.1
+      '@hookform/resolvers':
+        specifier: ^3.9.1
+        version: 3.10.0(react-hook-form@7.58.0(react@19.0.0))
       '@langchain/community':
         specifier: ^0.3.45
         version: 0.3.45(@browserbasehq/sdk@2.6.0)(@browserbasehq/stagehand@1.14.0(@playwright/test@1.53.0)(bufferutil@4.0.9)(deepmerge@4.3.1)(dotenv@16.5.0)(openai@5.2.0(ws@8.18.2(bufferutil@4.0.9))(zod@3.25.57))(zod@3.25.57))(@ibm-cloud/watsonx-ai@1.6.7)(@langchain/core@0.3.57(openai@5.2.0(ws@8.18.2(bufferutil@4.0.9))(zod@3.25.57)))(@supabase/supabase-js@2.50.0(bufferutil@4.0.9))(@vercel/postgres@0.10.0)(axios@1.9.0)(ibm-cloud-sdk-core@5.4.0)(ignore@5.3.2)(jsonwebtoken@9.0.2)(lodash@4.17.21)(openai@5.2.0(ws@8.18.2(bufferutil@4.0.9))(zod@3.25.57))(pg@8.16.0)(playwright@1.53.0)(redis@5.5.6)(weaviate-client@3.6.0)(ws@8.18.2(bufferutil@4.0.9))
@@ -108,7 +111,7 @@ importers:
         specifier: latest
         version: 2.50.0(bufferutil@4.0.9)
       '@tanstack/react-table':
-        specifier: ^8.21.3
+        specifier: ^8.20.6
         version: 8.21.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@vercel/analytics':
         specifier: ^1.5.0
@@ -257,6 +260,9 @@ importers:
       react-dropzone:
         specifier: ^14.3.8
         version: 14.3.8(react@19.0.0)
+      react-hook-form:
+        specifier: ^7.54.2
+        version: 7.58.0(react@19.0.0)
       react-markdown:
         specifier: ^10.1.0
         version: 10.1.0(@types/react@19.0.8)(react@19.0.0)
@@ -284,6 +290,12 @@ importers:
       swr:
         specifier: ^2.3.3
         version: 2.3.3(react@19.0.0)
+      tailwind-merge:
+        specifier: ^2.6.0
+        version: 2.6.0
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@3.4.17)
       usehooks-ts:
         specifier: ^3.1.1
         version: 3.1.1(react@19.0.0)
@@ -351,15 +363,9 @@ importers:
       supabase:
         specifier: ^2.24.3
         version: 2.24.3
-      tailwind-merge:
-        specifier: 2.6.0
-        version: 2.6.0
       tailwindcss:
         specifier: ^3.4.16
         version: 3.4.17
-      tailwindcss-animate:
-        specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@3.4.17)
       tsx:
         specifier: ^4.20.1
         version: 4.20.1
@@ -897,6 +903,11 @@ packages:
     resolution: {integrity: sha512-tMXdRCfYVixjuFK+Hk0Q1s38gV9zDiDJfWL3h1rv4Qc39oILCu1TRTDt7+fGUI8K4G1Fj125Hx/ru3azECWTyQ==}
     engines: {node: '>=6'}
     hasBin: true
+
+  '@hookform/resolvers@3.10.0':
+    resolution: {integrity: sha512-79Dv+3mDF7i+2ajj7SkypSKHhl1cbln1OGavqrsF7p6mbUv11xpqpacPsGDCTRvCSjEEIez2ef1NveSVL3b0Ag==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -5178,6 +5189,12 @@ packages:
     peerDependencies:
       react: '>= 16.8 || 18.0.0'
 
+  react-hook-form@7.58.0:
+    resolution: {integrity: sha512-zGijmEed35oNfOfy7ub99jfjkiLhHwA3dl5AgyKdWC6QQzhnc7tkWewSa+T+A2EpLrc6wo5DUoZctS9kufWJjA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -6354,6 +6371,10 @@ snapshots:
       long: 5.3.2
       protobufjs: 7.5.3
       yargs: 17.7.2
+
+  '@hookform/resolvers@3.10.0(react-hook-form@7.58.0(react@19.0.0))':
+    dependencies:
+      react-hook-form: 7.58.0(react@19.0.0)
 
   '@humanfs/core@0.19.1': {}
 
@@ -9195,7 +9216,7 @@ snapshots:
       isstream: 0.1.2
       jsonwebtoken: 9.0.2
       mime-types: 2.1.35
-      retry-axios: 2.6.0(axios@1.9.0(debug@4.4.1))
+      retry-axios: 2.6.0(axios@1.9.0)
       tough-cookie: 4.1.4
     transitivePeerDependencies:
       - supports-color
@@ -10633,6 +10654,10 @@ snapshots:
       prop-types: 15.8.1
       react: 19.0.0
 
+  react-hook-form@7.58.0(react@19.0.0):
+    dependencies:
+      react: 19.0.0
+
   react-is@16.13.1: {}
 
   react-is@18.3.1: {}
@@ -10837,7 +10862,7 @@ snapshots:
 
   resumable-stream@2.2.0: {}
 
-  retry-axios@2.6.0(axios@1.9.0(debug@4.4.1)):
+  retry-axios@2.6.0(axios@1.9.0):
     dependencies:
       axios: 1.9.0(debug@4.4.1)
 

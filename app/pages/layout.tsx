@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Nunito_Sans } from "next/font/google"
-import "./globals.css"
 import { AppSidebar } from "@/components/app-sidebar"
 import {
   Breadcrumb,

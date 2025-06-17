@@ -1,7 +1,6 @@
-import type React from "react"
+import React from "react"
 import type { Metadata } from "next"
 import { Nunito_Sans } from "next/font/google"
-import "./globals.css"
 import { AppSidebar } from "@/components/app-sidebar"
 import {
   Breadcrumb,
@@ -17,6 +16,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import DynamicBreadcrumbs from "@/components/DynamicBreadcrumbs";
 
 // Use Nunito Sans for body text
 const nunitoSans = Nunito_Sans({
@@ -44,19 +44,7 @@ export default function RootLayout({
             <div className="flex items-center gap-2 px-3">
               <SidebarTrigger />
               <Separator orientation="vertical" className="mr-2 h-4" />
-              <Breadcrumb>
-                <BreadcrumbList>
-                  <BreadcrumbItem className="hidden md:block">
-                    <BreadcrumbLink href="#">
-                      Building Your Application
-                    </BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator className="hidden md:block" />
-                  <BreadcrumbItem>
-                    <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                  </BreadcrumbItem>
-                </BreadcrumbList>
-              </Breadcrumb>
+              <DynamicBreadcrumbs />
             </div>
           </header>
           <div className="flex flex-1 flex-col gap-4 p-4">
