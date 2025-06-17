@@ -45,8 +45,10 @@ export async function queryDocumentationAgent(messages: Message[], includeRetrie
       }
     }
 
-    // Log a masked version of the key for debugging (only showing first 4 chars)
-    console.log(`Using API key: ${accessKey.substring(0, 4)}${"*".repeat(accessKey.length - 4)}`)
+    // Masked key can be useful for diagnostics without exposing the full value
+    console.info(
+      `Using API key: ${accessKey.substring(0, 4)}${"*".repeat(accessKey.length - 4)}`,
+    )
 
     // Prepare the request payload exactly as shown in the documentation
     const payload: ChatCompletionRequest = {
@@ -57,7 +59,10 @@ export async function queryDocumentationAgent(messages: Message[], includeRetrie
       include_guardrails_info: false,
     }
 
-    console.log("Sending request to Documentation Agent:", JSON.stringify(payload))
+    console.info(
+      "Sending request to Documentation Agent:",
+      JSON.stringify(payload),
+    )
 
     // Send the request with the exact Authorization header format from the documentation
     const response = await fetch(endpoint, {
@@ -69,9 +74,12 @@ export async function queryDocumentationAgent(messages: Message[], includeRetrie
       body: JSON.stringify(payload),
     })
 
-    // Log the full response for debugging
-    console.log("Documentation Agent response status:", response.status)
-    console.log("Documentation Agent response headers:", Object.fromEntries([...response.headers.entries()]))
+    // Log the response information for debugging
+    console.info("Documentation Agent response status:", response.status)
+    console.info(
+      "Documentation Agent response headers:",
+      Object.fromEntries([...response.headers.entries()]),
+    )
 
     // Handle non-OK responses
     if (!response.ok) {

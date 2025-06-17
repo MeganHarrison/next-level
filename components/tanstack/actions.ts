@@ -56,7 +56,7 @@ export async function fetchDataForTableView(options: {
     return { count: 0, data: [] }
   }
 
-  console.log("Fetched data:", data, "Count:", count)
+  // console.debug('Fetched data:', data, 'Count:', count)
 
   return { data: data as DatabaseSchema[], count: count ?? 0 }
 }

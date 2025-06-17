@@ -7,7 +7,7 @@ export const maxDuration = 30;
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
-  console.log(JSON.stringify(messages, null, 2));
+  // console.debug(JSON.stringify(messages, null, 2));
 
   const result = streamText({
     model: wrapLanguageModel({

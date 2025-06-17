@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   // Extract the `messages` from the body of the request
   const { messages, id } = await req.json();
 
-  console.log('chat id', id); // can be used for persisting the chat
+  // Use the chat id for persistence if needed
 
   // Call the language model
   const result = streamText({
