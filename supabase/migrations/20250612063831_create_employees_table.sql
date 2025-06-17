@@ -4,6 +4,5 @@ create table employees
     as identity,
   name text,
   email text,
-  created_at timestamptz default now
-    ()
+  created_at timestamptz default now()
 );
