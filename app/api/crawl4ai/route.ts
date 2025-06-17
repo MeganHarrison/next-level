@@ -1,15 +1,23 @@
 import { type NextRequest, NextResponse } from 'next/server';
 
-// TODO: change to the correct URL
-const CRAWL4AI_AGENT_URL = 'https://agent-crawl4ai-rag-1.onrender.com';
+// URL of the Crawl4AI agent server. Must be defined in the environment.
+const { CRAWL4AI_AGENT_URL } = process.env;
 
 export async function POST(req: NextRequest) {
   try {
     // Assume frontend sends { tool: string, args: object }
     const { tool, args } = await req.json();
 
+    const endpoint = CRAWL4AI_AGENT_URL;
+    if (!endpoint) {
+      return NextResponse.json(
+        { error: 'CRAWL4AI_AGENT_URL environment variable not set' },
+        { status: 500 }
+      );
+    }
+
     // Proxy the request to the Crawl4ai Agent
-    const response = await fetch(`${CRAWL4AI_AGENT_URL}/${tool}`, {
+    const response = await fetch(`${endpoint}/${tool}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(args),
