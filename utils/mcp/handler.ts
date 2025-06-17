@@ -43,7 +43,7 @@ function initializeMcpApiHandler({
 
     if (url.pathname === '/mcp/server') {
       if (req.method === 'GET') {
-        console.log('Received GET MCP request');
+        console.info('Received GET MCP request');
         res.writeHead(405, { 'Content-Type': 'application/json' }).end(
           JSON.stringify({
             jsonrpc: '2.0',
@@ -58,7 +58,7 @@ function initializeMcpApiHandler({
       }
 
       if (req.method === 'DELETE') {
-        console.log('Received DELETE MCP request');
+        console.info('Received DELETE MCP request');
         res.writeHead(405, { 'Content-Type': 'application/json' }).end(
           JSON.stringify({
             jsonrpc: '2.0',
@@ -72,7 +72,7 @@ function initializeMcpApiHandler({
         return;
       }
 
-      console.log('New MCP connection', req.url, req.method);
+      console.info('New MCP connection', req.url, req.method);
 
       if (req.method === 'POST') {
         /**
