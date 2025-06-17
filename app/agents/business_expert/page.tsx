@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
-import { askStrategistAgent } from "@/app/actions/strategist-agent-actions"
+import { askBusinessExpert } from "@/app/actions/business-expert-actions"
 import {
   getChatHistory,
   saveChatMessage,
@@ -236,9 +236,9 @@ export default function ChatPage() {
         }
       }
 
-      // Query strategist agent with context
+      // Query business expert agent with context
       const historyMessages = messages.map((msg) => ({ content: msg.content }))
-      const result = await askStrategistAgent(userMessage, historyMessages)
+      const result = await askBusinessExpert(userMessage, historyMessages)
 
       // Remove loading message
       setMessages((prev) => prev.filter((msg) => msg.id !== loadingId))
