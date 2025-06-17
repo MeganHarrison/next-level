@@ -1,10 +1,12 @@
 import { type NextRequest, NextResponse } from 'next/server';
 
-// TODO: change to the correct URL
-const CRAWL4AI_AGENT_URL = 'https://agent-crawl4ai-rag-1.onrender.com';
+const CRAWL4AI_AGENT_URL = process.env.CRAWL4AI_AGENT_URL;
 
 export async function POST(req: NextRequest) {
   try {
+    if (!CRAWL4AI_AGENT_URL) {
+      throw new Error('CRAWL4AI_AGENT_URL not configured');
+    }
     // Assume frontend sends { tool: string, args: object }
     const { tool, args } = await req.json();
 

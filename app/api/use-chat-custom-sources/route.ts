@@ -10,7 +10,7 @@ export async function POST(req: Request) {
       dataStream.writeSource({
         sourceType: 'url',
         id: 'source-1',
-        url: 'https://example.com',
+        url: process.env.CUSTOM_SOURCE_URL ?? 'https://example.com',
         title: 'Example Source',
       });
 

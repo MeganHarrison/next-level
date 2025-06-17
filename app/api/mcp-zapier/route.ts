@@ -6,10 +6,15 @@ export const maxDuration = 30;
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
+  const sseUrl = process.env.MCP_ZAPIER_SSE_URL;
+  if (!sseUrl) {
+    throw new Error('MCP_ZAPIER_SSE_URL not configured');
+  }
+
   const mcpClient = await experimental_createMCPClient({
     transport: {
       type: 'sse',
-      url: 'https://actions.zapier.com/mcp/[YOUR_KEY]/sse',
+      url: sseUrl,
     },
   });
 
