@@ -35,8 +35,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
     return (
-      <html lang="en" suppressHydrationWarning className={`${nunitoSans.variable}`}>
-      <body className="bg-white text-[#333333] antialiased">
+      <html lang="en" suppressHydrationWarning>
+      <body className={`${nunitoSans.variable} bg-white text-[#333333] antialiased`}>
       <SidebarProvider>
         <AppSidebar />
         <SidebarInset>
