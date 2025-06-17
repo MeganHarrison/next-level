@@ -29,7 +29,7 @@ export async function POST(req: Request) {
   // no await
   result.consumeStream({
     onError: error => {
-      console.log('Error during background stream consumption: ', error); // optional error callback
+      console.error('Error during background stream consumption: ', error);
     },
   });
 

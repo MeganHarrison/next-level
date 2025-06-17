@@ -8,7 +8,8 @@ export const maxDuration = 30;
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
-  console.log(JSON.stringify(messages, null, 2));
+  // Useful for debugging the request payload
+  // console.debug(JSON.stringify(messages, null, 2));
 
   const result = streamText({
     model: anthropic('claude-3-7-sonnet-20250219'),

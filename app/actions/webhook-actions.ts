@@ -19,7 +19,7 @@ export async function sendWebhook(message: string) {
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || ""
     const apiUrl = `${appUrl}/api/trigger-n8n`
 
-    console.log(`Sending webhook request to: ${apiUrl}`)
+    console.info(`Sending webhook request to: ${apiUrl}`)
 
     // Make a request to our API route
     const response = await fetch(apiUrl, {

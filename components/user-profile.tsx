@@ -29,9 +29,6 @@ export function UserProfile() {
           } else if (data?.user) {
             setUser(data.user)
           }
-        } else {
-          // No session, but this is expected on login/signup pages
-          console.log("No auth session found - this is normal on auth pages")
         }
       } catch (error: any) {
         console.error("Error in user profile:", error)
