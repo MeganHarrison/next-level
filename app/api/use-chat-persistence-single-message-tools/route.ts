@@ -1,5 +1,5 @@
 import { openai } from '@ai-sdk/openai';
-import { loadChat, saveChat } from '@util/chat-store';
+import { loadChat, saveChat } from '@/utils/chat-store';
 import {
   appendClientMessage,
   appendResponseMessages,
