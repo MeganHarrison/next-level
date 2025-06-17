@@ -1,6 +1,6 @@
 import { openai } from '@ai-sdk/openai';
 import { appendResponseMessages, createIdGenerator, streamText } from 'ai';
-import { saveChat } from '@util/chat-store';
+import { saveChat } from '@/utils/chat-store';
 
 export async function POST(req: Request) {
   const { messages, id } = await req.json();

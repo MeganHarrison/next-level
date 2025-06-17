@@ -1,11 +1,6 @@
 import type {Metadata} from "next";
-import { Nunito_Sans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 
-const nunitoSans = Nunito_Sans({
-    subsets: ["latin"],
-    variable: "--font-sans",
-  })
 
 export const metadata: Metadata = {
     title: "Supabase + TanStack Table Demo",
@@ -36,7 +31,7 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body
-            className={`${nunitoSans.variable} ${nunitoSans.variable} antialiased`}
+            className="antialiased"
         >
         {children}
         <Analytics />

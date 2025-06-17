@@ -1,6 +1,6 @@
 import { openai } from '@ai-sdk/openai';
 import { appendResponseMessages, createIdGenerator, streamText } from 'ai';
-import { loadChat, saveChat } from '@util/chat-store';
+import { loadChat, saveChat } from '@/utils/chat-store';
 
 export async function POST(req: Request) {
   // get the last message from the client:

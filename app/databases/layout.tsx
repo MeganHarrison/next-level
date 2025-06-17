@@ -1,6 +1,5 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Nunito_Sans } from "next/font/google"
 import { AppSidebar } from "@/components/app-sidebar"
 import {
   Breadcrumb,
@@ -17,11 +16,6 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 
-// Use Nunito Sans for body text
-const nunitoSans = Nunito_Sans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
 
 export const metadata: Metadata = {
   title: "Next Level AI Agents",
@@ -34,8 +28,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
     return (
-      <html lang="en" suppressHydrationWarning className={`${nunitoSans.variable}`}>
-      <body className="bg-white text-[#333333] antialiased">
+      <html lang="en" suppressHydrationWarning> 
+      <body className="bg-white text-[#333333] antialiased"> 
       <SidebarProvider>
         <AppSidebar />
         <SidebarInset>

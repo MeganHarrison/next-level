@@ -3,7 +3,7 @@ import {
   appendStreamId,
   loadStreams,
   saveChat,
-} from '@/util/chat-store';
+} from '@/utils/chat-store';
 import { openai } from '@ai-sdk/openai';
 import {
   appendResponseMessages,
