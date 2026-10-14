@@ -94,6 +94,9 @@ This application provides a chat interface where users can interact with AI agen
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `OPENAI_API_KEY`
    - `CRAWL4AI_AGENT_URL` - URL of the Crawl4AI agent server used by the proxy route
+   - `N8N_RAG_URL` (Webhook endpoint for your n8n flow)
+   - `N8N_API_KEY` (optional API key sent to the n8n webhook)
+   - `MCP_ZAPIER_SSE_URL` (Zapier MCP SSE endpoint)
 4. Run database migrations and seed data.
 5. Start the development server with `pnpm dev` or `npm run dev`.
 6. Access the app at `http://localhost:3000`.
